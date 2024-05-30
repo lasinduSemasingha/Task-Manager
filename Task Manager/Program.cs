@@ -14,21 +14,21 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         options.Cookie.HttpOnly = true;
         options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-        options.Cookie.SameSite = SameSiteMode.Strict; // Updated to use Strict for security reasons
+        options.Cookie.SameSite = SameSiteMode.Strict;
         options.LoginPath = "/User/Login";
         options.AccessDeniedPath = "/User/Login";
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(1); // Session timeout for authentication cookie
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
         options.SlidingExpiration = true;
     });
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(20); // Session timeout for general session
+    options.IdleTimeout = TimeSpan.FromMinutes(20); 
     options.Cookie.IsEssential = true;
     options.Cookie.HttpOnly = true;
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-    options.Cookie.SameSite = SameSiteMode.Strict; // Consistent SameSite mode for security
+    options.Cookie.SameSite = SameSiteMode.Strict;
 });
 
 var app = builder.Build();
