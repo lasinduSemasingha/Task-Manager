@@ -1,0 +1,43 @@
+﻿@inject IHttpContextAccessor HttpContext
+@model List<Task_Manager.Data.MVCDataContext.Task>
+@{
+}
+@if (HttpContext.HttpContext.Session.GetString("LoggedInUserId") != null)
+{
+<h1>Tasks</h1>
+<br /><br />
+<form asp-action="Add" asp-controller="Tasks" method="get">
+    <button type="submit" class="btn btn-warning">Add Tasks</button>
+</form>
+
+
+<table class="table">
+        <thead class="thead-dark">
+        <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col"> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>
+                    <form action="Tasks/View/@item.Id" method="get">
+                        <button type="submit" class="btn btn-success">View</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+else
+{
+            <h2>Please Login to View Tasks</h2>
+}

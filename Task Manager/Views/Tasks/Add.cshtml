@@ -1,0 +1,21 @@
+﻿@model Task_Manager.Models.TaskAddViewModel
+
+@{
+}
+<h1>Add Tasks</h1>
+<div class="add">
+
+<form method="post" action="Add" class="mt-5">
+  <div class="mb-3">
+    <label for="" class="form-label">Task Name</label>
+    <input type="text" class="form-control" asp-for="Title" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="" class="form-label">Description</label>
+    <input type="text" class="form-control" asp-for="Description" required>
+  </div>
+  <div class="btn"><button type="submit" class="btn btn-primary">Add Task</button></div>
+  
+</form>
+</div>
